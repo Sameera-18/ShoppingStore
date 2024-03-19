@@ -1,0 +1,21 @@
+{% include 'customerheader.html'%}
+<!-- banner -->
+<div class="pogoSlider" id="js-main-slider">
+	<div data-duration="2000" style="background-image:url(/static/patrick-fore-NnTQBkBkU9g-unsplash.jpg);background-size: cover;height: 929px;padding-top: 50px;object-fit: contain;">
+		<div class="pogoSlider-slide-element">
+			<div class="container">
+				<div class="banner-img-agile">
+					<img src="/static/images/bannerimg.png" alt="" class="img-fluid">
+				</div>
+				<h3 class="text-white" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">HAPPYHAULS</h3>
+				<p class="font-italic text-uppercase"><b>Welcome {{data['customer_fname']}}</b></p>
+				
+			</div>
+		</div>
+	</div>
+	{% include 'footer.html'%}
+	<style type="text/css">
+		#home{
+	color: #ff578c;
+	}
+	</style>

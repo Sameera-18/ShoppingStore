@@ -1,0 +1,368 @@
+{% include 'publicheader.html' %}
+
+<style type="text/css">
+	*{
+	padding: 0;
+	margin: 0;
+}
+body{
+  background: url(/static/ulysse-pointcheval-1WmlAiYgnoI-unsplash.jpg) no-repeat center fixed;
+  background-size: cover;
+}
+
+.container{
+	
+	width: 500px;
+	height: 800px;
+	margin-top: 200px;
+	position: absolute;
+	top:40%;
+	left: 35%;
+	transform: translate(-50%, -50%);
+	
+  
+}
+
+
+.fl{
+	float: left;
+  width: 110px;
+  line-height: 35px;
+}
+
+.fontLabel{
+	background-color: rgb(23, 40, 54);
+  color: white;
+  opacity: 0.8px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border-radius: 10px;
+}
+
+.fr{
+	float: right;
+}
+
+.clr{
+	clear: both;
+}
+
+.box{
+	width: 400px;
+	height: 35px;
+	
+	font-family: verdana;
+	font-size: 12px;
+	
+}
+
+
+.textBox{
+	height: 50px;
+	width: 250px;
+	background-color: #eee5ea;
+	color: rgb(236, 30, 150);
+  padding-left: 20px;
+  border-radius: 8px;
+  border:none;
+  margin-top: 20px;
+}
+.textBox:focus{
+	outline:1px solid #e48cce;
+	transform:  scale(1.1);
+	transition: ease-in-out .5s;
+}
+.new{
+  float: left;
+}
+
+.iconBox{
+	margin-top: 20px;
+	margin-left: 100px;
+	height: 35px;
+	width: 40px;
+	border-radius: 100px;
+	line-height: 38px;
+	text-align: center;
+  background: #f3f1f2;
+}
+
+.radio{
+	color: white;
+	background: #2d3e3f;
+	line-height: 38px;
+}
+
+.terms{
+	line-height: 35px;
+	text-align: center;
+	background: #2d3e3f;
+	color: white;
+}
+
+.submit{
+	border: none;
+	color: rgb(207, 65, 153);
+	width: 250px;
+	height: 45px;
+	border-radius: 10px;
+	background: #db86bd;
+	text-transform: uppercase;
+  cursor: pointer;
+  margin-left: 150px;
+  margin-top: 20px;
+}
+input[type="submit"]:hover{background:#e2a7c5 }
+#signin{
+    color: #ff578c;
+}
+
+</style>
+
+
+<!-- banner -->
+    <div class="pogoSlider" id="js-main-slider" style="height: 700px">
+        <div   style="background-image:url();">
+          
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Form</title>
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <!-- Body of Form starts -->
+  	<div class="container">
+      <form method="post" autocomplete="on">
+        <!--First name-->
+		<table><tr><Td>
+    		<div class="box">
+          <!-- <label for="fname" class="fl fontLabel"> First Name: </label> -->
+    			<div class="new iconBox">
+            <i class="fa fa-user" style="padding-top:10px;" aria-hidden="true"></i>
+          </div>
+    			<div class="fr">
+    					<input type="text" name="fname" placeholder="First Name"
+              class="textBox" autofocus="on" required>
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--First name-->
+		</Td>
+	<td>
+
+        <!--Second name-->
+    		<div class="box">
+          <!-- <label for="lname" class="fl fontLabel"> Seconed Name: </label> -->
+    			<div class="fl iconBox"><i class="fa fa-user" style="padding-top:10px;" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="text" required name="lname"
+              placeholder="Last Name" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--Second name-->
+		</td></tr>
+<tr><td>
+    		 <!--Second name-->
+    		<div class="box">
+          <!-- <label for="hno" class="fl fontLabel"> House Name: </label> -->
+    			<div class="fl iconBox"><i class="fa fa-home" style="padding-top:10px;" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="text" required name="hno"
+              placeholder=" House Name" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--Second name-->
+		</td><td>
+
+    		 <!--Second name-->
+    		<div class="box">
+          <!-- <label for="street" class="fl fontLabel">Street: </label> -->
+    			<div class="fl iconBox"><i class="fa fa-map" style="padding-top:10px;" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="text" required name="street"
+              placeholder="Street" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--Second name-->
+		</td></tr>
+		<tr><td>
+    		 <!--Second name-->
+    		<div class="box">
+          <!-- <label for="city" class="fl fontLabel"> City </label> -->
+    			<div class="fl iconBox"><i  class="fa fa-map" style="padding-top:10px;"aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="text" required name="city"
+              placeholder="City" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--Second name-->
+		</td><td>
+    		 <!--Second name-->
+    		<div class="box">
+          <!-- <label for="state" class="fl fontLabel"> State</label> -->
+    			<div class="fl iconBox"><i class="fa fa-map" style="padding-top:10px;" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="text" required name="state"
+              placeholder="State" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--Second name-->
+		</td></tr>
+		<tr><td>
+
+    		<!---Phone No.------>
+    		<div class="box">
+          <!-- <label for="pin" class="fl fontLabel"> Pincode: </label> -->
+    			<div class="fl iconBox"><i class="fa fa-map-pin" style="padding-top:10px;" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="text" required name="pin" maxlength="10" placeholder="Pincode No." class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!---Phone No.---->
+		</td><td>
+    		<!---Phone No.------>
+    		<div class="box">
+          <!-- <label for="num" class="fl fontLabel"> Phone No.: </label> -->
+    			<div class="fl iconBox"><i class="fa fa-phone-square" style="padding-top:10px;" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="number" min="0" required  pattern="[0-9]{10}"  name="num" maxlength="10" placeholder="Phone No." class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!---Phone No.---->
+		</td></tr>
+<tr><td>
+    		<!---Email ID---->
+    		<div class="box">
+          <!-- <label for="email" class="fl fontLabel"> Email ID: </label> -->
+    			<div class="fl iconBox"><i class="fa fa-envelope" style="padding-top:10px;" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="email" required name="email" placeholder="Email Id" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--Email ID----->
+		</td><td>
+    		<!---Email ID---->
+    		<div class="box">
+          <!-- <label for="uname" class="fl fontLabel"> User Name </label> -->
+    			<div class="fl iconBox"><i class="fa fa-envelope" style="padding-top:10px;" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="text" required name="uname" placeholder="User Name" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--Email ID----->
+
+		</td></tr>
+		<tr><td>
+    		<!---Password------>
+    		<div class="box">
+          <!-- <label for="pwd" class="fl fontLabel"> Password </label> -->
+    			<div class="fl iconBox"><i class="fa fa-key" style="padding-top:10px;" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="Password" required name="pwd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" class="textBox">
+    			</div>
+    			<div class="clr">
+    		</div>
+    		<!---Password---->
+		</td><td>
+			<div class="box">
+				<!-- <label for="pwd" class="fl fontLabel"> Password </label> -->
+					  <div class="fl iconBox"><i class="fa fa-key" style="padding-top:10px;" aria-hidden="true"></i></div>
+					  <div class="fr">
+							  <input type="Password" required name="rpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" placeholder="Password Again" class="textBox">
+					  </div>
+					  <div class="clr"></div>
+				  </div>	
+
+		</td></tr>
+    		<!--Terms and Conditions------>
+    	<!-- 	<div class="box terms">
+    				<input type="checkbox" name="Terms" required> &nbsp; I accept the terms and conditions
+    		</div> -->
+    		<!--Terms and Conditions------>
+
+
+<tr><td colspan="2" align="center">
+    		<!---Submit Button------>
+    		<div class="box" >
+    				<input type="Submit" name="Submit" class="submit" value="SIGN IN">
+    		</div></td></tr>
+		</table>
+    		<!---Submit Button----->
+      </form>
+  </div>
+  <!--Body of Form ends--->
+  </body>
+</html>
+
+</div></div></div><br><br><br><br>
+
+<!-- <center>
+<h1>Customer Registration</h1>
+<form method="post" style="" class="ppp">
+	<table class="table" style="width:500px">
+		<tr>
+			<th>First Name</th>
+			<td><input type="text" required="" class="form-control" name="fname"></td>
+		</tr>
+		<tr>
+			<th>Last Name</th>
+			<td><input type="text" required="" class="form-control" name="lname"></td>
+		</tr>
+
+		<tr>
+			<th>House Name:</th>
+			<td><input type="text" required="" class="form-control" name="hno"></td>
+		</tr>
+
+		<tr>
+			<th>Street</th>
+			<td><input type="text" required="" class="form-control" name="street"></td>
+		</tr>
+		<tr>
+			<th>City</th>
+			<td><input type="text" required="" class="form-control" name="city"></td>
+		</tr>
+		<tr>
+			<th>State</th>
+			<td><input type="text" required="" class="form-control" name="state"></td>
+		</tr>
+			
+		<tr>
+			<th>Pincode</th>
+			<td><input type="text" required="" pattern="[0-9]{6}" class="form-control" name="pin"></td>
+		</tr>
+			<tr>
+			<th>Phone</th>
+			<td><input type="text" required="" pattern="[0-9]{10}"  name="num"></td>
+		</tr>
+		
+		
+	<tr>
+			<th>Email</th>
+			<td><input type="email" required="" class="form-control"  name="email"></td>
+		</tr>
+
+		<tr>
+			<th>User Name</th>
+			<td><input type="email" required="" class="form-control"  name="uname"></td>
+		</tr>
+		<tr>
+			<th>Password</th>
+			<td><input type="password" required="" class="form-control" name="pwd"></td>
+		</tr>
+		<td align="center" colspan="2"><input type="submit" name="cusreg" value="submit" class="btn btn-success"></td>
+	</table>
+</form>
+</center> -->

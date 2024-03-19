@@ -1,0 +1,124 @@
+{% include 'customerheader.html'%}
+
+<!-- banner -->
+	<div class="pogoSlider" id="js-main-slider">
+		<div data-duration="2000" style="background-image:url(/static/patrick-fore-NnTQBkBkU9g-unsplash.jpg);background-size: cover;height: 929px;padding-top: 200px;background:black">
+			<div>
+				<div class="container">
+<center>
+
+	{% if data['cart'] %}
+	<h1 style="color: white">Buy Now</h1>
+	<form method="post">
+		<table class="table" style="width: 900px;color: white">
+			<tr>
+				<th>sino</th>
+				<th>Category</th>
+				<th>Brand</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th> Image</th>
+				<th> price</th>
+				<th>quantity</th>
+				
+				
+				
+			</tr>
+			{% for row in data['cart']%}
+    	<tr>
+    		<td>{{loop.index}}</td>
+			<td>{{row['category_name']}}</td>
+    		<td>{{row['brand_name'] }}</td>
+    		<td>{{row['product_name']}}</td>
+    		<td>{{row['product_description'] }}</td>
+    		
+    		<td><img src="/{{row['product_image'] }}" height="100" width="100"></td>
+    		<td>{{row['total_price']}}</td>
+
+			<td><span style="display: flex;gap: 15px;">
+			{% if row['quantity'] | int == 1 %}
+			<span>{{row['quantity'] }}</span>
+			<a href="?action=add_qty&omid={{ row['order_master_id'] }}&odid={{ row['order_details_id'] }}&price={{ row['rate'] }}" class="btn btn-success">+</a>
+			{% elif row['quantity'] | int == row['stock'] | int %}
+			<a href="?action=minus&omid={{ row['order_master_id'] }}&odid={{ row['order_details_id'] }}&price={{ row['rate'] }}" class="btn btn-danger">-</a>
+			<span>{{row['quantity'] }}</span>
+			
+			{% else %}
+			<a href="?action=minus&omid={{ row['order_master_id'] }}&odid={{ row['order_details_id'] }}&price={{ row['rate'] }}" class="btn btn-danger">-</a>
+			<span>{{row['quantity'] }}</span>
+			<a href="?action=add_qty&omid={{ row['order_master_id'] }}&odid={{ row['order_details_id'] }}&price={{ row['rate'] }}" class="btn btn-success">+</a>
+			
+			{% endif %}
+			</span></td>
+
+   	<td><input type="hidden" id="ourqty{{ loop.index }}" value="{{row['quantity'] }}" name=""></td>   			
+
+<td><input type="hidden" value="{{ row['stock'] }}" id="totalstock{{ loop.index }}" name=""></td>
+
+
+
+    		<td><input type="hidden" value="{{ row['order_master_id'] }}" name="oid{{ loop.index }}"></td>
+    		<td><input type="hidden" value="{{ row['product_id'] }}" name="pid{{ loop.index }}"></td>
+    		<td><button name="btn{{ loop.index }}" class="btn btn-danger" type="submit">Remove</button></td>
+    				
+    		
+    	</tr>
+    	{% endfor %}
+
+
+
+    	{% if data['cart']  %}
+    			<td align="center" colspan="7"><a id="mainbtn"  class="btn btn-success" href="payment?&ttamount={{data['cart'][0]['total_amount']}}&omid={{data['cart'][0]['order_master_id']}}&stock={{data['cart'][0]['stock']}}"> Buy Now </a>{{data['cart'][0]['total_amount']}}</td>
+
+    			{%  endif %}
+    			<td><span id="spansec" style="color: red">Out of stock, cant proceed!</span></td>
+
+   
+		</table>
+	</form>
+
+	{% else %}
+
+	<div>
+		<span style="color: rgb(246, 241, 241);font-size:100px">Cart is Empty</span>
+	</div>
+
+	{% endif %}
+</center>
+
+
+<input type="hidden" value="{{ data['len'] }}" id="count" name="">
+<script type="text/javascript">
+
+	var count = document.getElementById("count").value
+	var test = 0;
+	for (i=1; i<=count; i++){
+
+			var ourQty = document.getElementById("ourqty"+i)
+			var TotalQty = document.getElementById("totalstock"+i)
+			console.log(ourQty.value)
+			console.log(TotalQty.value)
+			if ( parseInt(ourQty.value) > parseInt(TotalQty.value) ){
+					console.log("out of stock")
+					test = 1;	
+				}else{
+					console.log("in stock")	
+
+					}
+							}
+
+			if(test == 1){
+				document.getElementById("mainbtn").style.display="none"
+				document.getElementById("spansec").style.display="block"
+			}else{
+				document.getElementById("mainbtn").style.display="block"
+				document.getElementById("spansec").style.display="none"
+			}
+ </script>
+
+</div></section>
+<style>
+	.table th{border: none;}
+	.table td{border: none;}
+
+</style>

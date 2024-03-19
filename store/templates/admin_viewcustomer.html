@@ -1,0 +1,82 @@
+{% include 'adminheader.html'%}
+
+
+<!-- banner -->
+  <div class="pogoSlider" id="js-main-slider">
+    <div data-duration="2000" style="background:url(/static/macaroons-3375255__340.jpg) no-repeat center fixed;background-size: cover;padding-top: 150px;padding-bottom: 450px;">
+      <div>
+        <div class="container">
+<center>
+	<h1>view Customer</h1>
+	<br><br>
+	<form style="background-color: white;">
+		<table class="table" style="width: 100%;background-color:white;color:black;border-radius:10px;">
+			<tr>
+				<th>sLno</th>
+				
+				
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>House Name</th>
+				<th>Street</th>
+				<th>City</th>
+				<th>State</th>
+				<th>Pincode</th>
+			
+				
+				<th>Phone</th>
+				<th>Email</th>
+				<th>Status</th>
+				
+			</tr>
+			{% for row in data['customerview']%}
+    	<tr>
+    		<td>{{loop.index}}</td>
+    		<td>{{row['customer_fname']}}</td>
+    		<td>{{row['customer_lname'] }}</td>
+    		<td>{{row['customer_houser_name']}}</td>
+    		<td>{{row['customer_street']}}</td>
+    		<td>{{row['customer_city']}}</td>
+    		<td>{{row['customer_state'] }}</td>
+    		<td>{{row['customer_pincode']}}</td>
+    		
+    		
+    		<td>{{row['customer_phone']}}</td>
+    		<td>{{row['customer_email']}}</td>
+
+    		{% if row['status']=="1"%}
+    	<td><a  class="btn btn-success" href="?action=reject&lid={{row['username']}}">InActive</a></td>
+    		{%elif row['status']=="0"%}
+	<td><a  class="btn btn-success" href="?action=accept&lid={{row['username']}}">Active</a></td>
+    		{% endif %}
+			
+    						
+    		
+    		
+    	
+      
+    		
+    	</tr>
+		
+    	{% endfor %}
+   
+		</table>
+	</form>
+	<a  class="btn btn-success" href="admin_customerreport">print</a>
+</center>
+</div></div></div></div>
+{% include 'footer.html'%}
+<style>
+.container{
+	background-color: white;
+	padding-bottom:20px;
+	padding-top:10px;
+	padding-bottom: 20px;
+		display: block;
+		border-radius: 20px;
+}
+
+#users{
+	color: #ff578c;
+	}
+</style>

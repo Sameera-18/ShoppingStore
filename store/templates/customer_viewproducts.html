@@ -1,0 +1,239 @@
+{% include 'customerheader.html'%}
+
+
+
+
+<!-- middle slider -->
+	<div class="projects py-5" style="background:url(/static/patrick-fore-NnTQBkBkU9g-unsplash.jpg) no-repeat center fixed ;background-size: cover;padding-top: 50px;object-fit: contain;">
+<br><br>
+		<h1 style="color: aliceblue;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" ></h1>
+
+		<center>
+	<form method="post">
+			<table>
+				<tr>
+					<td ><input style="margin-right:20px;border-radius: 8px;width:450Px;height:50px;text-align:center ;border:none;background: #a5c8cb" type="text" placeholder="search here....." name="product"></td>
+					<td><input style="border-radius: 15px;width:150Px;height:50px;text-align:center ;border:none;" type="submit" class="btn btn-success" name="search"></td>
+				</tr>
+			</table>
+
+
+<br>
+<br>
+        
+        <div style="width: 100%;min-height: 50px ;display: flex;justify-content: center;align-items: center;border-radius: 4px;gap:5px">
+			<label style="font-size: 18px;font-weight:bolder;color:black;float: left;">Available Categories</label>
+            <a style="background: #28a745;width:100px;height: 50px;color: white;font-size: 15px;padding-top: 10px;padding-bottom: 10px;border-radius: 15px" href="?action=none&pid=0&key=0">All</a><br>
+            {% for row in data['cat']%}
+
+         <a style="background: #28a745;width:100px;height: 50px;color: white;font-size: 15px;padding-top: 10px;padding-bottom: 10px;border-radius: 15px" href="?action=search&pid=0&key={{row['category_id']}}">{{row['category_name']}}</a><br>
+
+
+         {% endfor %}
+	      </form>
+            </center>
+              <br><br>            
+            <section class="section2">
+            {% for row in data['productsearch']%}
+                 <a href="?action=product&pid={{row['product_id']}}&key=0"><div class="cardsection">
+                   <div class="imagecontainer">
+                    <img src="/{{row['product_image'] }}" alt="">
+                    </div>
+                    <h4>{{row['product_name']}}</h4>
+                  <h4>RS.{{row['rate']}}</h4>
+              </div></a>
+              {%if(loop.index%3==0)%}
+                  </section><section class="section2">
+                    {%endif%}
+              {% endfor %}
+</section>
+{% if data['product']%}
+ <center>
+
+<div class="projects-grids">
+
+    <div class="sreen-gallery-cursual">
+
+        <div class="container" >
+            <div  >
+
+{% for row in data['product']%}
+
+<div class="item col-sm-3" style="margin-right:250px;margin-bottom:30px;">
+
+                    
+                    <div class="projects-agile-grid-info" style="background-color: rgb(255, 255, 255);width:500px;opacity:0.9;height:650px;border-radius:30px;padding-left:20px;padding-right:20px;padding-top:20px;padding-bottom:20px;" >
+                        <center height="'400px"><img style="height: 200px;width: 200px;border-radius:50px" src="/{{row['product_image'] }}" alt="" class="img-fluid" /></center>
+                       <center><div class="projects-grid-caption text-center mt-4">
+                         <center><table Style="margin-left: 20px;"><tr><td>
+                            <h4 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Product Name:</h4></td><td><h4>{{row['product_name']}}</h4></td></tr>
+                            <tr><td>
+                            <h4 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">category:</h4></td><td><h4>{{row['category_name']}}</h4></td></tr>
+                            <tr><td>
+                            <h4 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Brand:</h4></td><td><h4>{{row['brand_name']}}</h4></td></tr>
+                            <tr><td>
+                                <h4 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Expiry Date:</h4></td><td><h4>{{row['ExpiryDate']}}</h4></td></tr>
+                                <tr><td>
+
+                                <h4 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Manufacture Date:&nbsp;&nbsp;&nbsp;&nbsp;</h4></td><td><h4>{{row['ManufactureDate']}}</h4></td></tr>
+                                <tr><td>
+                            <h4 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" class="my-2">Description:</h4></td><td><h4>{{row['product_description'] }}</h4></td></tr>
+                        
+                        <tr><td>
+                            <B><h4 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" class="my-2">Price:</h4></td><td><h4></h4><B>{{row['rate']}}</B></h4></td></tr>
+                        </table></center>
+                            {% if row['stock'] | int > 0%}
+    <a href="customer_addtocart?pid={{row['product_id']}}&pname={{row['product_name']}}&pdis={{row['product_description']}}&pimg={{row['product_image']}}&pamo={{row['rate']}}&stock={{row['stock']}}">Add To Cart</a>
+
+
+    
+  <td><a class="btn btn-success" href="customer_addtocarts?pid={{row['product_id']}}&pname={{row['product_name']}}&pdis={{row['product_description']}}&pimg={{row['product_image']}}&pamo={{row['rate']}}&stock={{row['stock']}}">Buy Now</a></td>
+
+    {% elif row['stock'] | int <= 0%}
+                    
+
+    <a class="btn btn-success" href="#">Out  Of  Stock</a>
+     {% endif %}
+
+                        </div></center> 
+                    </div>
+
+                    
+                </div>
+
+
+            </center>
+{% endfor %}
+                
+            </div>
+        </div>
+
+        
+    
+
+            
+
+
+        
+    </div>
+
+{% endif %}
+
+</div></div>
+
+<!--
+
+		  <div class="projects-grids py-xl-5 py-lg-3">
+
+			
+			 <div class="sreen-gallery-cursual">
+
+				<div class="container" >
+					<div class="row"  >
+
+             {% for row in data['productsearch']%}
+
+	         <div class="item col-sm-3" style="margin-right:250px;margin-bottom:30px;">
+
+							
+							<div class="projects-agile-grid-info" style="background-color: rgb(255, 255, 255);width:450px;opacity:0.9;height:600px;border-radius:30px;padding-top:20px;padding-bottom:20px;" >
+								<center height="'400px"><img style="height: 200px;width: 200px;border-radius:50px" src="/{{row['product_image'] }}" alt="" class="img-fluid" /></center>
+								<div class="projects-grid-caption text-center mt-4">
+                                 <center><table Style="margin-left: 20px;"><tr><td>
+									<h4 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Product Name:</h4></td><td><h4>{{row['product_name']}}</h4></td></tr>
+							
+								<tr><td>
+									<B><h4 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" class="my-2">Price:</h4></td><td><h4></h4><B>{{row['rate']}}</B></h4></td></tr>
+								</table></center>
+									
+
+								</div>
+							</div>
+
+							
+						</div>
+
+
+
+{% endfor %}
+						
+					</div>
+				</div>
+
+				
+			
+
+					
+
+
+				
+			</div>
+
+				
+		</div>-->
+	
+	<!-- //middle slider -->
+
+
+
+    		
+         
+    	
+    	
+   
+
+<style type="text/css">
+    .imagecontainer
+{
+  width:100%;
+  height:300px;
+  overflow: hidden;
+}
+.imagecontainer img
+{
+  width: 100%;
+  height:100%;
+  object-fit: cover;
+  transition: 0.5s ease-in-out;
+}
+.section2
+{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 100%;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.cardsection h4{
+    background-color: white;
+  color:rgb(126,126,126);
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+}
+.cardsection{
+  width:350px;
+  border-radius: 15px;
+  box-shadow: 10px 5px 26px rgb(131, 125, 125);
+  overflow: hidden;
+  text-align: center;
+}
+.imagecontainer img:hover{
+  transform: scale(1.1);
+
+}
+a{
+  text-decoration:none;
+}
+	#product{
+color: #ff578c;
+}
+input[type="text"]:focus{
+	outline:2px solid #568589;
+}
+h4{
+	font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+}
+
+
+</style>
+{% include 'footer.html'%}

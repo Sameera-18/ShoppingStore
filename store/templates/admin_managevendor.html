@@ -1,0 +1,200 @@
+{% include 'adminheader.html'%}
+
+<!-- banner -->
+  <div class="pogoSlider" id="js-main-slider">
+    <div data-duration="2000" style="background-image:url(/static/macaroons-3375255__340.jpg);background-size: cover;padding-top: 150px;padding-bottom:30px;">
+      <div>
+        <div class="container">
+<center>
+<form method="post" class="box">
+	<h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Manage Vendor</h1>
+<br>
+	{% if data['vendorupdate']%}
+
+	<center><table ><tr><td>
+			<h2>Name</h2>
+			<input type="text" required="" class="form-control" value="{{data['vendorupdate'][0]['vendor_name']}}" name="fname">
+		</td><td>
+			<h2>Building Name</h2>
+			<input type="text" required="" class="form-control" value="{{data['vendorupdate'][0]['vendor_building_name']}}"  name="hno">
+		</td></tr>
+		<tr><td>
+			<h2>Street</h2>
+			<input type="text" required="" class="form-control" value="{{data['vendorupdate'][0]['vendor_street']}}"   name="street">
+		</td><td>
+			<h2>City</h2>
+			<input type="text" required="" class="form-control" value="{{data['vendorupdate'][0]['vendor_city']}}"  name="city">
+		</td></tr>
+		<tr><td>
+			<h2>State</h2>
+			<input type="text" required="" class="form-control" value="{{data['vendorupdate'][0]['vendor_state']}}" name="state">
+		</td><td>
+			<h2>Pincode</h2>
+			<input type="text" required="" pattern="[0-9]{6}" value="{{data['vendorupdate'][0]['vendor_pincode']}}" class="form-control"  name="pin">
+		</td></tr>
+		<tr><td>
+			<h2>Phone</h2>
+			<input type="text" required="" pattern="[0-9]{10}" class="form-control" value="{{data['vendorupdate'][0]['vendor_phone']}}"    name="num">
+		</td><td>
+			<h2>E-Mail</h2>
+			<input type="email" required="" class="form-control" value="{{data['vendorupdate'][0]['vendor_email']}}"  name="email">
+		</td></tr>
+		<tr><td colspan="2" algn="center">
+		<input type="submit" name="up" value="UPDATE" class="btn btn-success">
+	</td></tr></table></center>
+{% else %}
+<div clss="form-main-sec">	
+	<center><table><tr><td>
+			
+			<input type="text" required="" class="form-control"  name="fname"  placeholder="Name">
+		</td><td>
+			
+			<input type="text" required="" class="form-control"name="hno" placeholder="House Name">
+		</td></tr>
+		<tr><td>
+			
+			<input type="text" required="" class="form-control"    name="street" placeholder="Street">
+		</td><td>
+		
+			<input type="text" required="" class="form-control"  name="city" placeholder="City">
+		</td></tr>
+		<tr><td>
+		
+			<input type="text" required="" class="form-control" name="state" placeholder="State">
+		</td><td>
+		
+			<input type="text" required="" pattern="[0-9]{6}"  class="form-control"  name="pin" placeholder="Pincode">
+		</td></tr>
+		<tr><td>
+			<input type="text" required="" pattern="[0-9]{10}" class="form-control"  name="num" placeholder="Phone">
+		</td><td>
+			<input type="email" required="" class="form-control"  name="email" placeholder="Email">
+		</td></tr>
+		<tr><td>
+
+			
+		
+			<input type="text" required="" class="form-control" placeholder="User Name"  name="uname">
+		</td><td>
+			<input type="password" required="" class="form-control" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" name="pwd">
+		</td>
+	</tr>
+	<tr><td colspan="2" algn="center">
+			<input type="submit" name="vendor" value="ADD VENDOR" class="btn btn-success">
+		</td></tr></table></center>
+	</div>
+	
+{% endif %}
+</form>
+
+</center>
+
+</div></div></div></div>
+<center>
+	<Br><Br>
+	<h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">view Vendor</h1>
+	<br><form>
+		<table class="table" style="width: 500px;background-color:white;color:black;border-radius:30px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+			<tr style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+				<th>sino</th>
+				<th>Name</th>
+				<th>Building Name</th>
+				<th>Street</th>
+				<th>City</th>
+				<th>State</th>
+				<th>Pincode</th>
+				<th>Phone</th>
+				<th>Email</th>
+				<th>Date</th>
+				<th>Status</th>
+				<th>Updation</th>
+	
+			</tr>
+	{% for row in data['vendorview']%}
+    	<tr style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+    		<td>{{loop.index}}</td>
+    		<td>{{row['vendor_name'] }}</td>
+    		<td>{{row['vendor_building_name'] }}</td>
+    		<td>{{row['vendor_street'] }}</td>
+    		<td>{{row['vendor_city'] }}</td>
+    		<td>{{row['vendor_state'] }}</td>
+    		<td>{{row['vendor_pincode'] }}</td>
+    		<td>{{row['vendor_phone']}}</td>
+    		<td>{{row['vendor_email']}}</td>
+    		<td>{{row['date_added']}}</td>
+    		
+
+    		{% if row ['vendor_status']=="1"%}
+              <td><a class="btn btn-success" href="?action=inactive&vid={{row['vendor_id']}}">InActive</a></td>
+            
+             {% elif row ['vendor_status']=="0"%}
+             	<td><a class="btn btn-success" href="?action=active&vid={{row['vendor_id']}}">Active</a></td>
+         
+           {% endif %}
+      <td><a class="btn btn-success" href="?action=update&vid={{row['vendor_id']}}">Update</a></td>
+             
+    	</tr>
+    	{% endfor %}
+    
+		</table>
+    
+	</form>
+	<a  class="btn btn-success" href="admin_vendorreport">print</a>
+</center><br>
+
+<style>
+	.box {
+						  
+	opacity: 0.8;
+	border-radius: 20px;
+	background-color: black;
+	color: white;
+	text-align: center;
+	transition: 0.25s;
+	width:800px;
+	padding:10px;
+	
+}
+
+.box input[type="email"],
+.box input[type="password"],
+.box input[type="text"],
+.box input[type="number"] {
+	border: 0;background: none;display: block;margin: 20px auto;text-align: center;border: 2px solid #3498db;padding: 10px 10px;width: 250px;outline: none;color: rgb(164, 143, 167);border-radius: 8px;transition: 0.25s
+;margin-left:10px;
+}
+
+
+.box h2 {
+	color: white;
+	text-transform: uppercase;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;	font-weight: 100;
+	font-size: medium;
+	font-style: italic;
+}
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus,
+.box input[type="email"]:focus,
+.box input[type="number"]:focus {
+	transform:  scale(1.1);border-color: #2ecc71;
+	transition: ease-in-out .5s;
+}
+
+.box input[type="submit"] {border: 0;background: none;width: 250px;display: block;margin: 20px auto;text-align: center;border: 2px solid #2ecc71;padding: 14px 40px;outline: none;color: white;border-radius: 15px;transition: 0.25s;cursor: pointer
+}
+
+.box input[type="submit"]:hover {
+	background: #2ecc71
+}
+
+.form-main-sec{
+	margin: 50px auto !important;
+}
+#users{
+color: #ff578c;
+}
+</style>
+</center>
+<br>
+{% include 'footer.html'%}

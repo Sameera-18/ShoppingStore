@@ -1,0 +1,220 @@
+{% include 'customerheader.html' %}
+
+ <!-- ======= Hero Section ======= -->
+  <section id="hero" style="height: 900px">
+    <div class="hero-container">
+     
+
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <h3></h3>
+          <!--   <p class="blue-text">Just answer a few questions<br> so that we can personalize the right experience for you.</p> -->
+            <div class="card">
+                <h3 class="text-center mb-4" style="color: rgb(247, 245, 245);">My Profile</h3>
+                <form  method="post">
+
+                    {% if data['book']%}
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">First name<span class="text-danger"> *</span></label> <input type="text" value="{{data['book'][0]['customer_fname']}}" required="" id="fname" name="fname" pattern="[A-Z a-z]+$"   placeholder="Enter your first name" onblur="validate(1)"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Last name<span class="text-danger"> *</span></label> <input type="text" value="{{data['book'][0]['customer_lname']}}" required="" id="lname" name="lname" pattern="[A-Z a-z]+$" placeholder="Enter your last name" onblur="validate(2)"> </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">House Name:<span class="text-danger"> *</span></label> <input type="text" value="{{data['book'][0]['customer_houser_name']}}" required="" id="email" name="hno"  pattern="[A-Z a-z]+$"   placeholder="Enter your House Name" onblur="validate(3)"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Street<span class="text-danger"> *</span></label> <input type="text" value="{{data['book'][0]['customer_street']}}" required="" id="mob" name="street" placeholder="Enter your Street" onblur="validate(4)"> </div>
+                    </div>
+                   
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">City<span class="text-danger"> *</span></label> <input type="text" value="{{data['book'][0]['customer_city']}}" required="" id="email" name="district" pattern="[A-Z a-z]+$"  placeholder="Enter your city" onblur="validate(3)"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">State<span class="text-danger"> *</span></label> <input type="text" value="{{data['book'][0]['customer_state']}}" required="" id="mob" name="state" placeholder="Enter your State" onblur="validate(4)"> </div>
+                    </div>
+
+                   
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Pincode<span class="text-danger"> *</span></label> <input type="number"  value="{{data['book'][0]['customer_pincode']}}" required="" id="email" pattern="[0-9]{10}"  name="pin" placeholder="Enter your Pincode" onblur="validate(3)"> </div>
+                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Phone number<span class="text-danger"> *</span></label> <input type="text" value="{{data['book'][0]['customer_phone']}}" required="" pattern="[0-9]{10}" maxlength="10" id="mob" name="num" placeholder="Enter your Phone number" onblur="validate(4)"> </div>
+                       
+                    </div>
+                   
+                   
+                    <div class="row justify-content-between text-left">
+                      
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="form-group col-sm-6"> <button type="submit"  name="cusregss"  class="btn btn-success">Update Now</button> </div>
+                    </div>
+
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+  </section><!-- End Hero -->
+
+<style type="text/css">
+	body{color: #000;overflow-x: hidden;height: 100%;background-image: url("/static/patrick-fore-NnTQBkBkU9g-unsplash.jpg");background-repeat: no-repeat;background-size: 100% 100%}.card{padding: 30px 40px;margin-top: 60px;margin-bottom: 60px;border: none !important;    background-color: #020201;box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2)}.blue-text{color: #00BCD4}.form-control-label{margin-bottom: 0;color: white}input, textarea, button{padding: 8px 15px;border-radius: 5px !important;margin: 5px 0px;box-sizing: border-box;border: 1px solid #ccc;font-size: 18px !important;font-weight: 300}input:focus, textarea:focus{-moz-box-shadow: none !important;-webkit-box-shadow: none !important;box-shadow: none !important;border: 1px solid #00BCD4;outline-width: 0;font-weight: 400}.btn-block{text-transform: uppercase;font-size: 15px !important;font-weight: 400;height: 43px;cursor: pointer}.btn-block:hover{color: #fff !important}button:focus{-moz-box-shadow: none !important;-webkit-box-shadow: none !important;box-shadow: none !important;outline-width: 0}
+ 
+    #profile{
+color: #ff578c;
+}</style>
+
+
+<script type="text/javascript">
+	function validate(val) {
+    v1 = document.getElementById("fname");
+    v2 = document.getElementById("lname");
+    v3 = document.getElementById("email");
+    v4 = document.getElementById("mob");
+    v5 = document.getElementById("job");
+    v6 = document.getElementById("ans");
+
+    flag1 = true;
+    flag2 = true;
+    flag3 = true;
+    flag4 = true;
+    flag5 = true;
+    flag6 = true;
+
+    if(val>=1 || val==0) {
+        if(v1.value == "") {
+            v1.style.borderColor = "red";
+            flag1 = false;
+        }
+        else {
+            v1.style.borderColor = "green";
+            flag1 = true;
+        }
+    }
+
+    if(val>=2 || val==0) {
+        if(v2.value == "") {
+            v2.style.borderColor = "red";
+            flag2 = false;
+        }
+        else {
+            v2.style.borderColor = "green";
+            flag2 = true;
+        }
+    }
+    if(val>=3 || val==0) {
+        if(v3.value == "") {
+            v3.style.borderColor = "red";
+            flag3 = false;
+        }
+        else {
+            v3.style.borderColor = "green";
+            flag3 = true;
+        }
+    }
+    if(val>=4 || val==0) {
+        if(v4.value == "") {
+            v4.style.borderColor = "red";
+            flag4 = false;
+        }
+        else {
+            v4.style.borderColor = "green";
+            flag4 = true;
+        }
+    }
+    if(val>=5 || val==0) {
+        if(v5.value == "") {
+            v5.style.borderColor = "red";
+            flag5 = false;
+        }
+        else {
+            v5.style.borderColor = "green";
+            flag5 = true;
+        }
+    }
+    if(val>=6 || val==0) {
+        if(v6.value == "") {
+            v6.style.borderColor = "red";
+            flag6 = false;
+        }
+        else {
+            v6.style.borderColor = "green";
+            flag6 = true;
+        }
+    }
+
+    flag = flag1 && flag2 && flag3 && flag4 && flag5 && flag6;
+
+    return flag;
+}
+</script>
+<!-- <center>
+<h1>Customer Registration</h1>
+<form method="post" style="" class="ppp">
+	<table class="table" style="width:500px">
+		<tr>
+			<th>First Name</th>
+			<td><input type="text" required="" class="form-control" name="fname"></td>
+		</tr>
+		<tr>
+			<th>Last Name</th>
+			<td><input type="text" required="" class="form-control" name="lname"></td>
+		</tr>
+
+		<tr>
+			<th>House Name:</th>
+			<td><input type="text" required="" class="form-control" name="hno"></td>
+		</tr>
+
+		<tr>
+			<th>Street</th>
+			<td><input type="text" required="" class="form-control" name="street"></td>
+		</tr>
+		<tr>
+			<th>District</th>
+			<td><input type="text" required="" class="form-control" name="district"></td>
+		</tr>
+		<tr>
+			<th>State</th>
+			<td><input type="text" required="" class="form-control" name="state"></td>
+		</tr>
+			
+		<tr>
+			<th>Pincode</th>
+			<td><input type="text" required="" pattern="[0-9]{6}" class="form-control" name="pin"></td>
+		</tr>
+
+
+		<tr>
+			<th>Date</th>
+			<td><input type="date" required="" class="form-control" name="date"></td>
+		</tr>
+
+		<tr>
+			<th>Gender</th>
+			<td><input type="radio" required=""  class="btn btn-success" name="gen" value="female">Female
+			<input type="radio" required="" class="btn btn-success" name="gen" value="male">male
+			<input type="radio" required=""  class="btn btn-success" name="gen" value="other">Others</td>
+		</tr>
+
+		<tr>
+			<th>Phone</th>
+			<td><input type="text" required="" pattern="[0-9]{10}" class="form-control" name="num"></td>
+		</tr>
+		
+		
+		<tr>
+			<th>Email</th>
+			<td><input type="email" required="" class="form-control"  name="email"></td>
+		</tr>
+	
+	
+		<tr>
+			<th>User Name</th>
+			<td><input type="email" required="" class="form-control"  name="uname"></td>
+		</tr>
+		<tr>
+			<th>Password</th>
+			<td><input type="password" required="" class="form-control" name="pwd"></td>
+		</tr>
+		<td align="center" colspan="2"><input type="submit"value="submit" class="btn btn-success"></td>
+	</table>
+</form>
+</center> -->
+{% include 'footer.html'%}

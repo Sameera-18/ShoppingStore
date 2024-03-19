@@ -1,0 +1,58 @@
+
+{% include 'publicheader.html' %}
+
+<!-- banner -->
+    <div class="pogoSlider" id="js-main-slider" style="height: 851px;">
+        <div   style="background-image:url();">
+           <div class="loginBox" style="height: 400px;width:400px;">
+        <h3 style="font-family:Verdana, Geneva, Tahoma, sans-serif;"><i  class="fas fa-user"></i>
+            Login</h3>
+        <form method="post">
+            <div class="inputBox">
+             <input id="uname" type="text" name="uname" placeholder="Username"> 
+             <input id="pass" type="password" name="pwd" placeholder="Password"> 
+         </div> <input type="submit" name="login" value="Login">
+        </form> 
+        <div class="text-center">
+            <font color="#c967b0">Don't Have an account ? <u><a  href="customer_registration" style="color: #c967b0;font-family:Verdana, Geneva, Tahoma, sans-serif;">Sign-Up now</a></u ></font> 
+        </div>
+        
+    </div>
+
+        </div>
+       
+    </div>
+    <!-- //banner -->
+
+    <style type="text/css">
+    	body{margin: 0;
+            padding: 0;
+            background: url(/static/media-profile-NRtWpgpVDaw-unsplash.jpg) no-repeat;
+            height: 100vh;font-family: sans-serif;
+            background-size: cover;
+            opacity:.9;
+        
+            background-repeat: no-repeat;
+            background-position: center;overflow: hidden}
+            @media screen and (max-width: 600px)
+            {body{background-size: cover;position: fixed}}#particles-js{height: 100%}
+            .loginBox{position: absolute;top: 40%;left: 50%;transform: translate(-50%,-50%);width: 300px;min-height: 200px;
+                background: white;
+                box-shadow:  rgb(161, 159, 159);border-radius: 10px;padding: 40px;box-sizing: border-box}
+            .user{margin: 0 auto;display: block;margin-bottom: 20px}
+            h3{margin: 0;padding: 0 0 20px;color: #c967b0;text-align: center}
+            .loginBox input{width: 100%;margin-bottom: 20px}
+            .loginBox input[type="text"], .loginBox input[type="password"]
+            {border: 0;background:#eee5ea;display: block;margin: 20px auto;text-align: center;border: 2px solid none;padding: 10px 10px;width: 250px;outline: none;color: rgb(236, 30, 150);border-radius: 8px;transition: 0.25s}
+            .loginBox input[type="text"]:focus, .loginBox input[type="password"]:focus{outline:1px solid #e48cce;transform:  scale(1.1);
+	transition: ease-in-out .5s;}.inputBox{position: relative}.inputBox span{position: absolute;top: 10px;color: #262626}
+            .loginBox input[type="submit"]{border: 0;background: #e2a7c5;display: block;margin: 20px auto;text-align: center;width:250px;border:none;padding: 14px 40px;outline: none;color: rgb(207, 65, 153);border-radius: 8px;transition: 0.25s;cursor: pointer}
+            .loginBox a:hover{color: #262626;font-size: 14px;font-weight: bold;text-decoration: none;}
+            .loginBox input[type="submit"]:hover{background: #db86bd}
+            p{color: #151515}
+            #login{
+    color: #ff578c;
+}
+    </style>
+
+{% include 'footer.html'%}

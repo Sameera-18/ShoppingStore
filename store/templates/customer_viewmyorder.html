@@ -1,0 +1,58 @@
+{% include 'customerheader.html'%}
+
+<!-- banner -->
+	<div class="pogoSlider" id="js-main-slider">
+		<div data-duration="2000" style="background-image:url(/static/patrick-fore-NnTQBkBkU9g-unsplash.jpg);height: 900px;background-size: cover;padding-top: 200px;background:black">
+			<div>
+				<div class="container">
+<center>
+	<h1 style="color: white;">View My Orders</h1>
+	<form>
+		<table class="table" style="color: rgb(255, 255, 255);border-radius:30px;opacity:0.8;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+			<tr>
+				<th>#</th>
+				<th>category</th>
+				<th>Brand</th>
+
+				<th>Name</th>
+				<th>Description</th>
+				<th> Image</th>
+				<th> price</th>
+				<th>quantity</th>
+				<th>Status</th>
+				
+				
+				
+			</tr>
+			{% for row in data['myorder']%}
+    	<tr style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+    		<td>{{loop.index}}</td>
+    		<td>{{row['category_name']}}</td>
+    	<td>{{row['brand_name'] }}</td>
+    	
+    		<td>{{row['product_name']}}</td>
+    		<td>{{row['product_description'] }}</td>
+    		<td><img src="/{{row['product_image'] }}" height="100" width="100"></td>
+    		<td>{{row['total_price']}}</td>
+    		
+    		<td>{{row['quantity'] }}</td>
+    		<td>{{row['order_status']}}</td>
+			<td><a  class="btn btn-success" href="bill?omid={{row['order_master_id']}}">BILL</a></td>
+    		
+   
+    		
+    	</tr>
+    	{% endfor %}
+
+    
+		</table>
+	</form>
+</center>
+<style>
+		#order{
+color: #ff578c;
+}
+	.table th{border: none;}
+</style>
+</div></div></div></div>
+{% include 'footer.html'%}

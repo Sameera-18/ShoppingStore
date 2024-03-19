@@ -1,0 +1,62 @@
+{% include 'adminheader.html'%}
+<div class="pogoSlider" id="js-main-slider">
+    <div data-duration="2000" style="background-image:url(/static/macaroons-3375255__340.jpg);background-size: cover;padding-top: 150px;padding-bottom: 60px;"">
+      <div>
+        <div class="container">
+<center>
+	<h1 style="color: black;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Purchase Details</h1>
+	
+    <br>
+	<form style="opacity:0.8;border-radius:50px">
+		<table class="table" style="width: 500px;color:black">
+			<tr>
+				<th>sino</th>
+				
+				
+				
+
+				
+				<th>Product Name</th>
+				<th>Product Description</th>
+				<th>Product Image</th>
+				<!-- <th>Selling Price</th> -->
+				<th>Vendor Name</th>
+				<th>Quantity</th>
+		 
+				<th>Status</th>
+				
+			</tr>
+			{% for row in data['purchaseview']%}
+    	<tr>
+    		<td>{{loop.index}}</td>
+    		
+    		<td>{{row['product_name']}}</td>
+    		<td>{{row['product_description'] }}</td>
+    		<td><img src="/{{row['product_image'] }}" height="100" width="100"></td>
+    				<!-- <td>{{row['selling_price']}}</td> -->
+					<td>{{row['vendor_name']}}</td>
+    		<td>{{row['quantity'] }}</td>
+    		<td>{{row['status']}}</td>
+
+            {% endfor %}
+
+    	
+  
+    	
+
+    		
+ 
+		</table>
+	</form>
+	<a  class="btn btn-success" href="preport">print</a>
+</center>
+<style>
+	.container{
+		background-color: white;
+		width: 800px;
+		padding-top: 15px;
+		padding-bottom: 20px;
+		display: block;
+		border-radius: 20px;
+	}
+</style>
